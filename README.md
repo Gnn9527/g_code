@@ -3,11 +3,16 @@
 
 ### React的起源和发展
 
-    起初facebook在建设instagram（图片分享）的时候嘞，因为牵扯到一个东东叫数据流，那为了处理数据流并且还要考虑好性能方面的问题嘞，Facebook开始对市场上的各种前端MVC框架去进行一个研究，然而并没有看上眼的，于是Facebook觉得，还是自己开发一个才是最棒的，那么他们决定抛开很多所谓的“最佳实践”，重新思考前端界面的构建方式，他们就自己开发了一套，果然大牛创造力还是很强大的。
+    起初facebook在建设instagram（图片分享）的时候嘞，因为牵扯到一个东东叫数据流，那为了处理数据流并且还要考虑好性能方面的问题嘞，Facebook开始对
+    市场上的各种前端MVC框架去进行一个研究，然而并没有看上眼的，于是Facebook觉得，还是自己开发一个才是最棒的，那么他们决定抛开很多所谓的“最佳实践”
+    重新思考前端界面的构建方式，他们就自己开发了一套，果然大牛创造力还是很强大的。
 
 ### React的出发点
 
-    基于HTML的前端界面开发正变得越来越复杂，其本质问题基本都可以归结于如何将来自于服务器端或者用户输入的动态数据高效的反映到复杂的用户界面上。而来自Facebook的React框架正是完全面向此问题的一个解决方案，按官网描述，其出发点为：用于开发数据不断变化的大型应用程序（Building large applications with data that changes over time）。相比传统型的前端开发，React开辟了一个相当另类的途径，实现了前端界面的高性能高效率开发。
+    基于HTML的前端界面开发正变得越来越复杂，其本质问题基本都可以归结于如何将来自于服务器端或者用户输入的动态数据高效的反映到复杂的用户界面上。
+    而来自Facebook的React框架正是完全面向此问题的一个解决方案，按官网描述，其出发点为：用于开发数据不断变化的大型应用程序
+    （Building large applications with data that changes over time）。
+    相比传统型的前端开发，React开辟了一个相当另类的途径，实现了前端界面的高性能高效率开发。
 
 ### React与传统MVC的关系
 
@@ -19,11 +24,17 @@
 
 React高性能的原理：
 
-在Web开发中我们总需要将变化的数据实时反应到UI上，这时就需要对DOM进行操作。而复杂或频繁的DOM操作通常是性能瓶颈产生的原因（如何进行高性能的复杂DOM操作通常是衡量一个前端开发人员技能的重要指标）。
+在Web开发中我们总需要将变化的数据实时反应到UI上，这时就需要对DOM进行操作。
+而复杂或频繁的DOM操作通常是性能瓶颈产生的原因（如何进行高性能的复杂DOM操作通常是衡量一个前端开发人员技能的重要指标）。
 
-React为此引入了虚拟DOM（Virtual DOM）的机制：在浏览器端用Javascript实现了一套DOM API。基于React进行开发时所有的DOM构造都是通过虚拟DOM进行，每当数据变化时，React都会重新构建整个DOM树，然后React将当前整个DOM树和上一次的DOM树进行对比，得到DOM结构的区别，然后仅仅将需要变化的部分进行实际的浏览器DOM更新。而且React能够批处理虚拟DOM的刷新，在一个事件循环（Event Loop）内的两次数据变化会被合并，例如你连续的先将节点内容从A-B,B-A，React会认为A变成B，然后又从B变成A  UI不发生任何变化，而如果通过手动控制，这种逻辑通常是极其复杂的。
+React为此引入了虚拟DOM（Virtual DOM）的机制：在浏览器端用Javascript实现了一套DOM API。
+基于React进行开发时所有的DOM构造都是通过虚拟DOM进行，每当数据变化时，React都会重新构建整个DOM树，然后React将当前整个DOM树和上一次的DOM树进行对比
+得到DOM结构的区别，然后仅仅将需要变化的部分进行实际的浏览器DOM更新。而且React能够批处理虚拟DOM的刷新，在一个事件循环（Event Loop）内的两次数据变
+化会被合并，例如你连续的先将节点内容从A-B,B-A，React会认为A变成B，然后又从B变成A  UI不发生任何变化，而如果通过手动控制，这种逻辑通常是极其复杂的。
 
-尽管每一次都需要构造完整的虚拟DOM树，但是因为虚拟DOM是内存数据，性能是极高的，部而对实际DOM进行操作的仅仅是Diff分，因而能达到提高性能的目的。这样，在保证性能的同时，开发者将不再需要关注某个数据的变化如何更新到一个或多个具体的DOM元素，而只需要关心在任意一个数据状态下，整个界面是如何Render的。数据驱动，声明式
+尽管每一次都需要构造完整的虚拟DOM树，但是因为虚拟DOM是内存数据，性能是极高的，部而对实际DOM进行操作的仅仅是Diff分，因而能达到提高性能的目的。
+这样，在保证性能的同时，开发者将不再需要关注某个数据的变化如何更新到一个或多个具体的DOM元素，而只需要关心在任意一个数据状态下，
+整个界面是如何Render的。数据驱动，声明式
 
 
 
@@ -34,7 +45,8 @@ React为此引入了虚拟DOM（Virtual DOM）的机制：在浏览器端用Java
 
 我们以前操作dom的方式是通过document.getElementById()的方式，这样的过程实际上是先去读取html的dom结构，将结构转换成变量，再进行操作
 
-而reactjs定义了一套变量形式的dom模型，一切操作和换算直接在变量中，这样减少了操作真实dom，性能真实相当的高，和主流MVC框架有本质的区别，并不和dom打交道
+而reactjs定义了一套变量形式的dom模型，一切操作和换算直接在变量中，这样减少了操作真实dom，性能真实相当的高，和主流MVC框架有本质的区别，
+并不和dom打交道
 
 2. 组件系统
 
@@ -52,7 +64,9 @@ react最核心的思想是将页面中任何一个区域或者元素都可以看
 
 4. JSX  语法
 
-在vue中，我们使用render函数来构建组件的dom结构性能较高，因为省去了查找和编译模板的过程，但是在render中利用createElement创建结构的时候代码可读性较低，较为复杂，此时可以利用jsx语法来在render中创建dom，解决这个问题，但是前提是需要使用工具来编译jsx
+在vue中，我们使用render函数来构建组件的dom结构性能较高，因为省去了查找和编译模板的过程，
+但是在render中利用createElement创建结构的时候代码可读性较低，较为复杂，此时可以利用jsx语法来在render中创建dom，解决这个问题，
+但是前提是需要使用工具来编译jsx
 
 ### 创建第一个组件
 
@@ -78,7 +92,8 @@ react-dom.js中有ReactDOM对象，渲染组件的虚拟dom为真实dom的爆发
     //创建组件
     var Hello = React.createClass({
         render:function () {
-            //render函数和Vue组件里的render完全一样，在vue组件中可以不用编写render函数，这个时候可以使用template模板来编写组件的虚拟dom结构，然后vue组件会自动讲模板compile成虚拟dom结构放入到render中执行，但是react需要编写render函数
+            //render函数和Vue组件里的render完全一样，在vue组件中可以不用编写render函数，这个时候可以使用template模板来编写组件的虚拟dom结构，
+	    然后vue组件会自动讲模板compile成虚拟dom结构放入到render中执行，但是react需要编写render函数
 
             return (
                 //jsx语法
@@ -142,7 +157,8 @@ jsx借鉴xml的语法而不是html的语法原因：xml要比html严谨，编译
 
 React推荐我们使用行内样式，因为react觉得每一个组件都是一个独立的整体
 
-其实我们大多数情况下还是大量的在为元素添加类名、id以使用某些样式，但是需要注意的是，class需要写成className（因为毕竟是在写类js代码，会收到js规则的现在，而class是关键字）
+其实我们大多数情况下还是大量的在为元素添加类名、id以使用某些样式，但是需要注意的是，class需要写成className
+（因为毕竟是在写类js代码，会收到js规则的现在，而class是关键字）
 
 ```
 <p className="bg-p" id="myp" style = { this.style }>Hello world</p>
@@ -327,11 +343,13 @@ render:function () {
 
 在组件中只能通过getInitialState的钩子函数来给组件挂载初始状态,在组件内部通过this.state获取
 
-this.props和this.state是纯js对象,在vue中，$data属性是利用Object.defineProperty处理过的，更改$data的数据的时候会触发数据的getter和setter，但是react中没有做这样的处理，如果直接更改的话，react是无法得知的，所以，需要使用特殊的更改状态的方法：
+this.props和this.state是纯js对象,在vue中，$data属性是利用Object.defineProperty处理过的，更改$data的数据的时候会触发数据的getter和setter，
+但是react中没有做这样的处理，如果直接更改的话，react是无法得知的，所以，需要使用特殊的更改状态的方法：
 
 setState(params)
 
-在setState中传入一个对象，就会将组件的状态中键值对的部分更改，还可以传入一个函数，这个回调函数必须返回像上面方式一样的一个对象，函数可以接收prevState和props
+在setState中传入一个对象，就会将组件的状态中键值对的部分更改，还可以传入一个函数，这个回调函数必须返回像上面方式一样的一个对象，
+函数可以接收prevState和props
 
 ```
 //1.
@@ -394,7 +412,8 @@ react中组件也有生命周期，也就是说也有很多钩子函数供我们
 
 ![生命周期]('./life.jpg')
 
-组件是一个构造器，每一次使用组件都相当于在实例化组件，在这个时候，组件就会经历一次生命周期，从实例化实例开始到这个实例销毁的时候，都是一次完整的生命周期
+组件是一个构造器，每一次使用组件都相当于在实例化组件，在这个时候，组件就会经历一次生命周期，从实例化实例开始到这个实例销毁的时候，
+都是一次完整的生命周期
 
 组件的生命周期，我们会分为三个阶段，初始化、运行中、销毁
 
@@ -404,17 +423,18 @@ react中组件也有生命周期，也就是说也有很多钩子函数供我们
 
     这个钩子函数的目的是为组件的实例挂载默认的属性
 
-    这个钩子函数只会执行一次，也就是说，只在第一次实例化的时候执行，创建出所有实例共享的默认属性，后面再实例化的时候，不会执行getDefaultProps，直接使用已有的共享的默认属性
+    这个钩子函数只会执行一次，也就是说，只在第一次实例化的时候执行，创建出所有实例共享的默认属性，后面再实例化的时候，
+    不会执行getDefaultProps，直接使用已有的共享的默认属性
 
     理论上来说，写成函数返回对象的方式，是为了防止实例共享，但是react专门为了让实例共享，只能让这个函数只执行一次
 
-    组件间共享默认属性会减少内存空间的浪费，而且也不需要担心某一个实例更改属性后其他的实例也会更改的问题，因为组件不能自己更改属性，而且默认属性的优先级低。
+    组件间共享默认属性会减少内存空间的浪费，而且也不需要担心某一个实例更改属性后其他的实例也会更改的问题，
+    因为组件不能自己更改属性，而且默认属性的优先级低。
 
 2. 执行getInitialState为实例挂载初始状态，且每次实例化都会执行，也就是说，每一个组件实例都拥有自己独立的状态呢
 
-3. 执行componentWillMount，相当于Vue里的created+beforeMount，这里是在渲染之前最后一次更改数据的机会，在这里更改的话是不会触发render的重新执行
-
-    多做一些初始数据的获取
+3. 执行componentWillMount，相当于Vue里的created+beforeMount，这里是在渲染之前最后一次更改数据的机会，
+在这里更改的话是不会触发render的重新执行多做一些初始数据的获取
 
 4. 执行render，渲染dom
 
@@ -451,7 +471,9 @@ react中组件也有生命周期，也就是说也有很多钩子函数供我们
 
 为什么Vue中有destroyed，而react却没有componentDidUnmount
 
-Vue在调用$destroy方法的时候就会执行beforeDestroy，然后组件被销毁，这个时候组件的dom结构还存在于页面结构中，也就说如果想要对残留的dom结构进行处理必须在destroyed处理，但是react执行完componentWillUnmount之后把事件、数据、dom都全部处理掉了，所以根本不需要其他的钩子函数了
+Vue在调用$destroy方法的时候就会执行beforeDestroy，然后组件被销毁，这个时候组件的dom结构还存在于页面结构中，
+也就说如果想要对残留的dom结构进行处理必须在destroyed处理，但是react执行完componentWillUnmount之后把事件、数据、dom都全部处理掉了，
+所以根本不需要其他的钩子函数了
 
 怎么样就算组件被销毁：
 
@@ -491,9 +513,11 @@ react对事件对象做了优化，如果不取值的话，值都是null
 
 ##### React中的mixins
 
-在vue中我们可以将一些通用的、公用的方法放入到某一个纯js对象中，然后，在需要使用改方法的组件中使用mixins配置（值为对象）将该js对象中的方法注入到组件中，这样就能实现代码复用，便于维护
+在vue中我们可以将一些通用的、公用的方法放入到某一个纯js对象中，然后，在需要使用改方法的组件中使用mixins配置（值为对象）
+将该js对象中的方法注入到组件中，这样就能实现代码复用，便于维护
 
-在React中曾经也有这样的api，但是在高版本react中推荐我们使用es6中的class来创建组件了，这个时候无法使用mixinsapi，所以mixins被废弃了，如果要使用公用代码抽离，我们可以使用模块化
+在React中曾经也有这样的api，但是在高版本react中推荐我们使用es6中的class来创建组件了，这个时候无法使用mixinsapi，所以mixins被废弃了，
+如果要使用公用代码抽离，我们可以使用模块化
 
 ##### React-keys
 
@@ -507,7 +531,8 @@ Keys可以在DOM中的某些元素被增加或删除的时候帮助React识别�
 
 ##### 组合
 
-在vue中有一个内容分发叫slot，在react中也有实现，就是可以在使用组件的时候，在组件标签内部放入一些不固定的内容，在该组件的模板中，只有{this.props.children}来表示
+在vue中有一个内容分发叫slot，在react中也有实现，就是可以在使用组件的时候，在组件标签内部放入一些不固定的内容，在该组件的模板中，
+只有{this.props.children}来表示
 
 ```
 //App
@@ -549,7 +574,8 @@ webpack在打包的时候，依靠依赖关系图，在打包的时候需要告�
 
 ##### entry
 
-entry配置项目打包的入口，值可以为单个的字符串执行某一个文件的地址，这个时候该文件就是入口文件，webpack会根据入口文件里各模块间的关系形成依赖关系图，然后根据依赖关系图进行打包
+entry配置项目打包的入口，值可以为单个的字符串执行某一个文件的地址，这个时候该文件就是入口文件，
+webpack会根据入口文件里各模块间的关系形成依赖关系图，然后根据依赖关系图进行打包
 ```
 entry:'./src/app.js',
 output:{
@@ -565,7 +591,8 @@ output:{
     filename:'[name].js'//不确定名字的时候，这里会打包成main.js
 }
 ```
-刚才的两种entry配置都只会打包出一个js文件，但是在某一个应用中我们可能需要将js根据依赖关系打包成多个js文件，并且在多页面应用中，我们也确实不可能只使用一个js文件，那么我们就可以使用如下的配置：
+刚才的两种entry配置都只会打包出一个js文件，但是在某一个应用中我们可能需要将js根据依赖关系打包成多个js文件，并且在多页面应用中，
+我们也确实不可能只使用一个js文件，那么我们就可以使用如下的配置：
 
 ```
     entry:{
@@ -607,7 +634,9 @@ module.exports = (env)=>{
 
 ##### plugins
 
-在webpack编译用的是loader，但是有一些loader无法完成的任务，交由插件（plugin）来完成，插件的时候需要在配置项中配置plugins选项，值是数组，可以放入多个插件的使用，而一般的插件都是一个构造器，我们只需在plugins数组中放入该插件的实例即可，在实例化插件的时候又可以传入options，对插件的使用进行配置
+在webpack编译用的是loader，但是有一些loader无法完成的任务，交由插件（plugin）来完成，插件的时候需要在配置项中配置plugins选项，值是数组，
+可以放入多个插件的使用，而一般的插件都是一个构造器，我们只需在plugins数组中放入该插件的实例即可，在实例化插件的时候又可以传入options，
+对插件的使用进行配置
 
 html-webpack-plugin
 
@@ -662,7 +691,8 @@ devServer:{
 }
 ```
 #### LOADERS
-在webpack中专门有一些东西用来编译文件、处理文件，这些东西就叫loader，loader的使用就是在配置项中，设置modules，在modules中设置rule值为数组，在数组里放入多个匹配规则：
+在webpack中专门有一些东西用来编译文件、处理文件，这些东西就叫loader，loader的使用就是在配置项中，设置modules，在modules中设置rule值为数组，
+在数组里放入多个匹配规则：
 
 ```
 module:{
@@ -887,7 +917,8 @@ export default Button
 
 在vue中，vue是完整的mvvm框架，而vuex只是一个全局的插件
 
-react只是一个视图层的框架，在flux是一个架构思想，我们在做项目的时候使用flux架构的话要比单纯使用react要简单很多，这个时候，react在整个FLUX架构中担任某一个角色的
+react只是一个视图层的框架，在flux是一个架构思想，我们在做项目的时候使用flux架构的话要比单纯使用react要简单很多，
+这个时候，react在整个FLUX架构中担任某一个角色的
 
 react在这里只是充当了FLUX架构体系中的view层
 
@@ -978,7 +1009,8 @@ Reducer 函数最重要的特征是，它是一个纯函数。也就是说，只
 
 不能调用Date.now()或者Math.random()等不纯的方法，因为每次会得到不一样的结果
 
-由于 Reducer 是纯函数，就可以保证同样的State，必定得到同样的 View。但也正因为这一点，Reducer 函数里面不能改变 State，必须返回一个全新的对象，请参考下面的写法。
+由于 Reducer 是纯函数，就可以保证同样的State，必定得到同样的 View。但也正因为这一点，Reducer 函数里面不能改变 State，必须返回一个全新的对象
+请参考下面的写法。
 ```
 // State 是一个对象
 function reducer(state, action) {
@@ -993,7 +1025,8 @@ function reducer(state, action) {
 }
 ```
 
-最好把 State 对象设成只读。你没法改变它，要得到新的 State，唯一办法就是生成一个新对象。这样的好处是，任何时候，与某个 View 对应的 State 总是一个不变的对象。
+最好把 State 对象设成只读。你没法改变它，要得到新的 State，唯一办法就是生成一个新对象。
+这样的好处是，任何时候，与某个 View 对应的 State 总是一个不变的对象。
 
 我们可以通过在createStore中传入第二个参数来设置默认的state，但是这种形式只适合于只有一个reducer的时候
 
@@ -1118,7 +1151,8 @@ UI 组件有以下几个特征。
 
 只要记住一句话就可以了：UI 组件负责 UI 的呈现，容器组件负责管理数据和逻辑。
 
-你可能会问，如果一个组件既有 UI 又有业务逻辑，那怎么办？回答是，将它拆分成下面的结构：外面是一个容器组件，里面包了一个UI 组件。前者负责与外部的通信，将数据传给后者，由后者渲染出视图。
+你可能会问，如果一个组件既有 UI 又有业务逻辑，那怎么办？回答是，将它拆分成下面的结构：外面是一个容器组件，里面包了一个UI 组件。
+前者负责与外部的通信，将数据传给后者，由后者渲染出视图。
 
 React-Redux 规定，所有的 UI 组件都由用户提供，容器组件则是由 React-Redux 自动生成。也就是说，用户负责视觉层，状态管理则是全部交给它。
 
@@ -1127,11 +1161,13 @@ React-Redux 规定，所有的 UI 组件都由用户提供，容器组件则是�
 
 1. 使用Provider组件，包裹在应用的最外层，并为Provider注入store属性，此时，Provider就会将自己的store属性传递给子组件组合中的容器组件
 
-2. 使用connect函数，可以根据一个现有的UI组件生成一个容器组件，且我们在使用的时候，其实一直在使用的都是容器组件，connect函数执行之后返回一个函数，将返回的函数传入UI组件并执行之后就会生成一个容器组件
+2. 使用connect函数，可以根据一个现有的UI组件生成一个容器组件，且我们在使用的时候，其实一直在使用的都是容器组件，
+connect函数执行之后返回一个函数，将返回的函数传入UI组件并执行之后就会生成一个容器组件
 
 3. connect函数有两个参数：mapStateToProps,mapDispatchToProps
 
-* mapStateToProps的作用很简单，就是将redux中的state传递到UI组件的props上，此参数是一个函数，接收到store的state然后再返回一个对象，返回的对象中的属性就会传递到UI组件的属性上
+* mapStateToProps的作用很简单，就是将redux中的state传递到UI组件的props上，此参数是一个函数，接收到store的state然后再返回一个对象，
+返回的对象中的属性就会传递到UI组件的属性上
 
 	mapStateToProps对store进行了订阅，只要state更改，mapStateToProps会自动执行并获取到最新的state传入到UI组件的属性上
 
@@ -1148,7 +1184,9 @@ React-Redux 规定，所有的 UI 组件都由用户提供，容器组件则是�
 
 创建了actionCreator，专门生成action，又设置 了actions，在actions里放一些异步的、复杂的操作之后，调用actionCreator生成action再dispatch到reducer
 
-其实我们上面创建actions的目的，就是因为ActionCreator不能做复杂的动作，其实我们可以使用redux-thunk来对reducer创建中间件，让actionCreator的方法能返回一个函数，这个函数就可以接收到dispatch，且做出异步操作之后dispatch出action，也就是说，我们不需要再创建actions来分离异步复杂操作，而且直接可以在ActionCreator里写异步方法
+其实我们上面创建actions的目的，就是因为ActionCreator不能做复杂的动作，其实我们可以使用redux-thunk来对reducer创建中间件，
+让actionCreator的方法能返回一个函数，这个函数就可以接收到dispatch，且做出异步操作之后dispatch出action，
+也就是说，我们不需要再创建actions来分离异步复杂操作，而且直接可以在ActionCreator里写异步方法
 
 步骤：
 
@@ -1201,7 +1239,8 @@ button onClick={this.props.actions_thunk.clearCart}
 
 其实，现在有这样的流行做法：
 
-将所有的数据都交由redux管理，这样的话，我们的组件在UI层的逻辑就更纯粹了,而且可以做到数据缓存，比如，A组件获取了数据放入到redux中，当A组件被切换掉之后重新切换回来的时候，数据依然在redux中可以找到，也就是说直接取出来用就ok，不需要重新获取
+将所有的数据都交由redux管理，这样的话，我们的组件在UI层的逻辑就更纯粹了,而且可以做到数据缓存，
+比如，A组件获取了数据放入到redux中，当A组件被切换掉之后重新切换回来的时候，数据依然在redux中可以找到，也就是说直接取出来用就ok，不需要重新获取
 
 
 
@@ -1283,11 +1322,13 @@ this.son
     父组件将自己的方法传递给子组件，子组件在调用的时候传参
     父组件通过ref获取到子组件，调用子组件的方法传参
 
-    react是一款视图层的轻量级前端框架，大量的非父子组件通信、状态共享会导致整个项目数据复杂，难以维护，所以react不适合处理大量的数据通信，为了解决这个问题，引入了FLUX、REDUX这样的数据架构，react结合FLUX或者redux才能实现比较复杂的前端项目
+    react是一款视图层的轻量级前端框架，大量的非父子组件通信、状态共享会导致整个项目数据复杂，难以维护，
+    所以react不适合处理大量的数据通信，为了解决这个问题，引入了FLUX、REDUX这样的数据架构，react结合FLUX或者redux才能实现比较复杂的前端项目
 
 12. 在react中，列表循环尽量不要使用index作为key值，这和diff算法有关系，请简述diff算法中key值有什么作用，为什么key中使用index值会降低代码性能
 
-    key值是diff算法中对比两个虚拟dom的最重要参考，决定了哪些列表中的组件可以复用，如果使用index作为key中，列表数据改变后，会导致同一个dom元素的key中发送改变，本来可以复用的组件必须重新创建，降低页面性能，除非列表不需要改变，一般情况不使用index作为key值
+    key值是diff算法中对比两个虚拟dom的最重要参考，决定了哪些列表中的组件可以复用，如果使用index作为key中，列表数据改变后，
+    会导致同一个dom元素的key中发送改变，本来可以复用的组件必须重新创建，降低页面性能，除非列表不需要改变，一般情况不使用index作为key值
 
 13. 请列举你所了解的react中的性能优化
 
@@ -1306,7 +1347,10 @@ this.son
 
 14. 请说明react中引入redux-thunk、redux-promise这两种中间件可以解决什么样的问题
 
-    通常情况下，action只是一个对象，不能包含异步操作，这导致了很多创建action的逻辑只能写在组件中，代码量较多也不便于复用，同时对该部分代码测试的时候也比较困难，组件的业务逻辑也不清晰，使用中间件了之后，可以通过actionCreator异步编写action，这样代码就会拆分到actionCreator中，可维护性大大提高，可以方便于测试、复用，同时actionCreator还集成了异步操作中不同的action派发机制，减少编码过程中的代码量
+    通常情况下，action只是一个对象，不能包含异步操作，这导致了很多创建action的逻辑只能写在组件中，代码量较多也不便于复用，
+    同时对该部分代码测试的时候也比较困难，组件的业务逻辑也不清晰，使用中间件了之后，可以通过actionCreator异步编写action，
+    这样代码就会拆分到actionCreator中，可维护性大大提高，可以方便于测试、复用，同时actionCreator还集成了异步操作中不同的action派发机制，
+    减少编码过程中的代码量
 
 15. 画图说明redux的架构，写出redux中常用的函数
 
@@ -1325,16 +1369,19 @@ this.son
     * 在<Router/>外面嵌套<Provider store={store}></Provider>，将store传递给各个子组件
     * 编写UI组件
     * 使用react-redux的connect方法结合mapStateToProps、mapDispatchToProps生成容器组件，容器组件和store连接在一起
-    * 如果某一个组件不是路由组件，却需要使用router相关api，并且还需要使用store中的state的时候，需要在最外层包裹withRouter，里面再使用connect生成容器组件
+    * 如果某一个组件不是路由组件，却需要使用router相关api，并且还需要使用store中的state的时候，
+    需要在最外层包裹withRouter，里面再使用connect生成容器组件
 
 
 17. 下列说法错误的是：
 
-    （React是一款专注于数据层的前端框架）、react中需要调用setState方法来重置状态、react中的虚拟dom可以提升框架自身的性能、（react是一款符合MVVM设计思想的前端框架）
+    （React是一款专注于数据层的前端框架）、react中需要调用setState方法来重置状态、react中的虚拟dom可以提升框架自身的性能、
+    （react是一款符合MVVM设计思想的前端框架）
 
 18. 关于前端组件化说法错误的是：
 
-    前端组件使得复杂的代码得以被更好的划分、组件化的代码设计方式增加了代码的可复用性、（在拆分组件的时候将组件拆分的越小越细越好）、组件化开发是一种设计思想，不是react独享的
+    前端组件使得复杂的代码得以被更好的划分、组件化的代码设计方式增加了代码的可复用性、
+    （在拆分组件的时候将组件拆分的越小越细越好）、组件化开发是一种设计思想，不是react独享的
 
 19. 在react中，异步获取ajax数据一般放在那个生命周期函数：componentWillMount、ComponentDidMount
 
@@ -1346,11 +1393,15 @@ this.son
 
 22. webpack中html-webpack-plugin插件可以完成的任务是：
 
-    (在打包输出目录中自动生成index.html)、(向打包目录中的index.html文件内插入打包生成的js文件引用)、将js源码中引用的css代码抽离ちゅ单独的css文件并放置到打包输出目录、(像打包输出目录中的index.html文件插入打包生成的css引用)
+    (在打包输出目录中自动生成index.html)、(向打包目录中的index.html文件内插入打包生成的js文件引用)、
+    将js源码中引用的css代码抽离到单独的css文件并放置到打包输出目录、(像打包输出目录中的index.html文件插入打包生成的css引用)
 
 23. 关于jsx，说明正确的是：(ad)
 
-    a:jsx中可以通过{}来使用js的表达式，b:jsx中可以通过{}来使用js的代码，c:jsx中可以使用style={color:'red'}来设置元素的样式、d:jsx代码会被解析成一个js对象
+    a:jsx中可以通过{}来使用js的表达式，
+    b:jsx中可以通过{}来使用js的代码，
+    c:jsx中可以使用style={color:'red'}来设置元素的样式、
+    d:jsx代码会被解析成一个js对象
 
 24. react组件被挂载到页面 的时候，被执行的生命周期函数包括：(ab)
 
@@ -1366,9 +1417,11 @@ this.son
 
 27. 在react组件中，当（props或者state）发送变化的时候，会导致render生命周期函数重新执行
 
-28. 使用react-redux时，页面上的组件需要被拆分成（容器）组件和（UI）组件，通过使用（connect/mapStateToProps）方法，可以把store中固定state内容映射到组件上
+28. 使用react-redux时，页面上的组件需要被拆分成（容器）组件和（UI）组件，
+通过使用（connect/mapStateToProps）方法，可以把store中固定state内容映射到组件上
 
-29. 使用ES6创建react组件的方式是（class ...  extends React.Component）,ES5创建组件的方法是(React.createClass),创建无状态组件的方式是(function(props){return ()})
+29. 使用ES6创建react组件的方式是（class ...  extends React.Component）,ES5创建组件的方法是(React.createClass),
+创建无状态组件的方式是(function(props){return ()})
 
 30. react中，ref属性的作用是（获取jsx中元素的真实dom节点或子组件）
 
@@ -1376,7 +1429,9 @@ this.son
 
 32. 请简述react-router中hashHistory和browserHistory的区别：
 
-    这是react-router中设置监听url路径变化的两种方式，hashHistory在切换路由的时候会在url上跟着哈希值，browserHistory通过判断path变化才切换路由，且path变化的时候后端可以接收到请求，需要后端配置忽略掉
+    这是react-router中设置监听url路径变化的两种方式，
+    hashHistory在切换路由的时候会在url上跟着哈希值，
+    browserHistory通过判断path变化才切换路由，且path变化的时候后端可以接收到请求，需要后端配置忽略掉
 
 33. 请画图说明flux中的单向数据流
 
